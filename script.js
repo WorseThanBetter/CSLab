@@ -7,22 +7,24 @@ function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+        if (i < 4) {
+        color += letters[Math.floor(Math.random() * 10)];
+        } else {
+        color += letters[Math.floor(Math.random() * 4 + 12)]; 
+        }; 
     };
+    console.log(color);
     return color;
 };
 
-setInterval(plimply, 500);
 
-var fbr = document.querySelectorAll(".flash");
+function flashColors() {
+var flashes = document.querySelectorAll(".flash");
+flashes.forEach(function(flash){
 
-function plimply() {
-    fbr.forEach(eri);
-};
+var randomColor = getRandomColor();
+flash.style.backgroundColor = randomColor;
+})
+}
 
-function eri() {
-    for (var i = 0; i < 10; i++) {
-        var randomColor = getRandomColor();
-        fbr[i].style.backgroundColor = randomColor;
-    };
-};
+setInterval(flashColors, 100);
